@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 
+const PN_CODE = import.meta.env.VITE_PUSH_NOTIFICATION_CODE
+
 const App = () => {
   const notificationSound = 'default'
   const [title, setTitle] = useState('')
@@ -22,13 +24,18 @@ const App = () => {
   }
 
   const handleSubmit = (e) => {
-    const submitFields = {
-      sound: notificationSound,
-      title: title,
-      body: body,
+    if (code === PN_CODE) {
+      const submitFields = {
+        sound: notificationSound,
+        title: title,
+        body: body,
+      }
+      alert(JSON.stringify(submitFields))
+    }
+    else {
+      alert('The code you entered is incorrect')
     }
 
-    alert(JSON.stringify(submitFields))
     e.preventDefault()
   }
 
