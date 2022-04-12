@@ -1,9 +1,11 @@
+import axios from 'axios'
 import { useState } from 'react'
 import './App.css'
 
-const PN_CODE = import.meta.env.VITE_PUSH_NOTIFICATION_CODE
-
 const App = () => {
+  const PN_CODE = import.meta.env.VITE_PUSH_NOTIFICATION_CODE
+  const BE_URL = 'https://uwo-sr-app-server.herokuapp.com/api/exponotification'
+
   const notificationSound = 'default'
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
@@ -23,20 +25,27 @@ const App = () => {
     setCode(e.target.value)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     if (code === PN_CODE) {
       const submitFields = {
         sound: notificationSound,
         title: title,
         body: body,
       }
+
+      await axios.put(BE_URL, submitFields)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       alert(JSON.stringify(submitFields))
     }
     else {
       alert('The code you entered is incorrect')
     }
-
-    e.preventDefault()
   }
 
   return (
@@ -60,7 +69,7 @@ const App = () => {
             <label htmlFor='code'>
               Code:
             </label>
-            <input name='code' className='text-input' type='text' value={code} onChange={handleCodeChange} />
+            <input name='code' className='text-input' type='password' value={code} onChange={handleCodeChange} />
           </div>
           <input type='submit' value='Submit' />
         </form>
