@@ -1,43 +1,63 @@
 import { useState } from 'react'
-import logo from './logo.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const notificationSound = 'default'
+  const [title, setTitle] = useState('')
+  const [body, setBody] = useState('')
+  const [code, setCode] = useState('')
+
+  const handleTitleChange = (e) => {
+    console.log(e.target.value)
+    setTitle(e.target.value)
+  }
+  const handleBodyChange = (e) => {
+    console.log(e.target.value)
+    setBody(e.target.value)
+  }
+
+  const handleCodeChange = (e) => {
+    console.log(e.target.value)
+    setCode(e.target.value)
+  }
+
+  const handleSubmit = (e) => {
+    const submitFields = {
+      sound: notificationSound,
+      title: title,
+      body: body,
+    }
+
+    alert(JSON.stringify(submitFields))
+    e.preventDefault()
+  }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+    <div className='app'>
+      <div className='container'>
+        <h3>SR Push Notification Service</h3>
+        <form className='form' onSubmit={handleSubmit}>
+          <div className='form-input'>
+            <label htmlFor='title'>
+              Title:
+            </label>
+            <input name='title' className='text-input' type='title' value={title} onChange={handleTitleChange} />
+          </div>
+          <div className='form-input'>
+            <label htmlFor='body'>
+              Body:
+            </label>
+            <input name='body' className='text-input' type='text' value={body} onChange={handleBodyChange} />
+          </div>
+          <div className='form-input'>
+            <label htmlFor='code'>
+              Code:
+            </label>
+            <input name='code' className='text-input' type='text' value={code} onChange={handleCodeChange} />
+          </div>
+          <input type='submit' value='Submit' />
+        </form>
+      </div>
     </div>
   )
 }
