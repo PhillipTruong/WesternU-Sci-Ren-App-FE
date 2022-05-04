@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import './App.css'
-
+import notificationImg from './notificationEx.png'
 const App = () => {
   const PN_CODE = import.meta.env.VITE_PUSH_NOTIFICATION_CODE
   const BE_URL = 'https://uwo-sr-app-server.herokuapp.com/api/exponotification'
@@ -54,7 +54,7 @@ const App = () => {
         <h3 className='title'>SR Push Notification Service</h3>
         <p className='subtitle'>Use the form to send a notification to all phones with WesternUSciRenApp downloaded</p>
         <h4>Example Notification:</h4>
-        <img className='notification-img' src='/src/notificationEx.png' />
+        <img className='notification-img' src={notificationImg} alt="Image of an example notification" />
         <form className='form' onSubmit={handleSubmit}>
           <div className='form-input'>
             <label htmlFor='title' className='input-label'>
