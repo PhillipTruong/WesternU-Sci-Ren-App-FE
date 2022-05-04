@@ -41,37 +41,42 @@ const App = () => {
         .catch(function (error) {
           console.log(error);
         });
-      alert(JSON.stringify(submitFields))
+      alert("Your notification has been sent :)")
     }
     else {
-      alert('The code you entered is incorrect')
+      alert('The code you entered is incorrect, please contact Emma, Phillip, or Abdulaziz regarding the code')
     }
   }
 
   return (
     <div className='app'>
       <div className='container'>
-        <h3>SR Push Notification Service</h3>
+        <h3 className='title'>SR Push Notification Service</h3>
+        <p className='subtitle'>Use the form to send a notification to all phones with WesternUSciRenApp downloaded</p>
+        <h4>Example Notification:</h4>
+        <img className='notification-img' src='/src/notificationEx.png' />
         <form className='form' onSubmit={handleSubmit}>
           <div className='form-input'>
-            <label htmlFor='title'>
+            <label htmlFor='title' className='input-label'>
               Title:
             </label>
             <input name='title' className='text-input' type='title' value={title} onChange={handleTitleChange} />
           </div>
           <div className='form-input'>
-            <label htmlFor='body'>
+            <label htmlFor='body' className='input-label'>
               Body:
             </label>
             <input name='body' className='text-input' type='text' value={body} onChange={handleBodyChange} />
           </div>
           <div className='form-input'>
-            <label htmlFor='code'>
+            <label htmlFor='code' className='input-label'>
               Code:
             </label>
             <input name='code' className='text-input' type='password' value={code} onChange={handleCodeChange} />
           </div>
-          <input type='submit' value='Submit' />
+          <div className='submit-button-container'>
+            <input className='submit-button' type='submit' value='Send' />
+          </div>
         </form>
       </div>
     </div>

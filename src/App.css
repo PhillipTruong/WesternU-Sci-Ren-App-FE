@@ -1,7 +1,8 @@
 .app {
+
   height: 100vh;
   width: 100vw;
-  background: #EEEEEE;
+  background: #00BDC5;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,27 +13,58 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
   border-radius: 10px;
-  padding: 5em;
+  padding: 2em;
   background: white;
 }
 
+.title {
+  text-align: center;
+}
+
 .form {
+  width: 100%;
   display: flex;
   justify-content: center;
-  /* align-items: center; */
   flex-direction: column;
 }
 
 .form-input {
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: center;
   flex-direction: column;
-  margin: 1em;
+  margin: 1em 0em;
+  transition: border .3s ease;
+}
+
+.input-label{
+  align-self: start;
+  margin-bottom: 0.5em;
 }
 
 .text-input {
+  box-sizing: border-box;
   width: 100%;
+  padding: 8px 8px;
+  border-radius: 5px;
+  border: 1px solid #CDD9ED;
+  font-size: 1em;
+}
+
+.submit-button-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.notification-img {
+  width: 90%;
+  max-width: 25em;
+}
+
+.submit-button{
+  padding: 0.5em 1em;
 }
