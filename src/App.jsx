@@ -4,7 +4,7 @@ import './App.css'
 import notificationImg from './notificationEx.png'
 const App = () => {
   const PN_CODE = import.meta.env.VITE_PUSH_NOTIFICATION_CODE
-  const BE_URL = 'https://uwo-sr-app-server.herokuapp.com/api/exponotification'
+  const BE_URL = 'https://western-sciren-server.vercel.app'
 
   const notificationSound = 'default'
   const [title, setTitle] = useState('')
